@@ -17,3 +17,10 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - run: cat /etc/lsb-release
       - run: cat init.txt
+      
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          cat mycode.cpp
+          g++ mycode.cpp -o mycode
+          /mycode
