@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: Magicleap GitHub Actions Demo
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
   
 jobs:
-  Explore-GitHub-Actions:
+  Preparation:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -25,12 +25,28 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-      - run: cat /etc/lsb-release
-      - run: cat init.txt
-      
+     
+           
+  Build:
+    runs-on: ubuntu-latest
+    steps:  
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
           cat mycode.cpp
           g++ mycode.cpp -o mycode
           ./mycode
+          
+  Test-Deploy:
+    runs-on: ubuntu-latest
+    steps:  
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          cat /etc/lsb-release
+          cat init.txt
+          echo "Testing code..."
+          sleep 2
+          echo "Deploying code..."
+          sleep 2
+          echo "Done"
