@@ -33,4 +33,4 @@ jobs:
         run: |
           cat mycode.cpp
           g++ mycode.cpp -o mycode
-          /mycode
+          ./mycode
